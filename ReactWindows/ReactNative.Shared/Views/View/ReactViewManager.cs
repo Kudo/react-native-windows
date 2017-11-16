@@ -63,6 +63,7 @@ namespace ReactNative.Views.View
             if (view.Border == null)
             {
                 view.Border = new Border { BorderBrush = s_defaultBorderBrush };
+                view.Border.IsHitTestVisible = false;
 
                 // Layout animations bypass SetDimensions, hence using XAML bindings.
 
@@ -169,8 +170,7 @@ namespace ReactNative.Views.View
             DefaultUInt32 = ColorHelpers.Transparent)]
         public void SetBackgroundColor(BorderedCanvas view, uint color)
         {
-            var border = GetOrCreateBorder(view);
-            border.Background = new SolidColorBrush(ColorHelpers.Parse(color));
+            view.Background = new SolidColorBrush(ColorHelpers.Parse(color));
         }
 
         /// <summary>
